@@ -5,12 +5,7 @@ import firebase_admin
 from firebase_admin import credentials, auth, db
 
 # Pyrebase config
-config = {
-    "apiKey": "AIzaSyANdDmy8rrqjOdbzAA6QCtD0BUZ4GfSOik",
-    "authDomain": "facerecproj.firebaseapp.com",
-    "databaseURL": "https://facerecproj-default-rtdb.europe-west1.firebasedatabase.app",
-    "storageBucket": "gs://facerecproj.appspot.com",
-}
+config = pbc.config
 
 # Initialize Pyrebase
 firebase = pyrebase.initialize_app(config)
@@ -23,8 +18,9 @@ firebase_admin.initialize_app(cred, {
 })
 
 # Authenticate user with email and password using Pyrebase
-email = "jonathanboxall@outlook.com"
-password = "Jonnieb12!"
+# Authenticate user with email and password
+email = pbc.email
+password = pbc.password
 try:
     user = auth_pyrebase.sign_in_with_email_and_password(email, password)
     id_token = user['idToken']
